@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
   def show
+    id = params[:path_id]
+    @photo = Photo.where(id:).first
   end
 
   def index

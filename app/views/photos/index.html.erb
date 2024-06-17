@@ -20,7 +20,7 @@
   <tbody>
     <%@photos.each do |photo|%>
       <tr>
-        <td><img src="<%=photo.image%>" ></td>
+        <td><img height="300px" src="<%=photo.image%>" ></td>
         <td><%=photo.caption%></td>
         <td><%=photo.poster.username%></td>
         <td><%=photo.created_at%></td>

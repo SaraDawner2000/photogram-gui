@@ -1,2 +1,40 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<h1>Photo Details</h1>
+<dl>
+  <dt>Image</dt>
+  <dd><img height="300px" src="<%=@photo.image%>"></dd>
+  <dt>Caption</dt>
+  <dd><p><%=@photo.caption%></p></dd>
+  <dt>Owner</dt>
+  <dd><%=@photo.poster.username%></dd>
+  <dt>Posted</dt>
+  <dd><%=@photo.created_at%></dd>
+  <dt>Edit photo</dt>
+  <dd>
+    <form action="/photos/update/<%=@photo.id%>" method = "post">
+      <label for="image_url_id">Image</label>
+      <input id="image_url_id" name="query_image_url" value="<%=@photo.image%>" type="text">
+      <label for="caption_id">Caption</label>
+      <textarea name="query_caption" id="caption_id"><%=@photo.caption%></textarea>
+      <button>Update photo</button>
+    </form>
+  </dd>
+  <dt>Delete photo</dt>
+  <dd><a href="/photos/delete/<%=@photo.id%>">Delete this photo</a></dd>
+</dl>
+<h2>Comments</h2>
+<table class="comment_table">
+  <thead>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </thead>
+  <tbody>
+    <%@photo.comments.each do |comment|%>
+    <tr>
+      <td><%=comment.commenter.username%></td>
+      <td><%=comment.body%></td>
+      <td><%=comment.created_at%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
