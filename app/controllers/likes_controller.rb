@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class LikesController < ApplicationController
   def show
   end
 

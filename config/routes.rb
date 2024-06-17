@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'follow_requests/show'
+  get 'follow_requests/index'
+  get 'photos/show'
+  get 'photos/index'
+  get 'likes/show'
+  get 'likes/index'
+  get 'comments/show'
+  get 'comments/index'
   get "/", controller: "users", action: "index"
 
   get "/users", controller: "users", action: "index"
