@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    id = params[:path_id]
-    @user = User.where(id:).first
+    username = params[:path_id]
+    @user = User.where(username:).first
   end
 
   def index
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
-      redirect_to "/users", notice: "User created successfully"
+      redirect_to "/users/#{@user.username}", notice: "User created successfully"
     else
       redirect_to "/users", alert: "User failed to create successfully"
     end
@@ -27,15 +27,16 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
-      redirect_to "/users/#{@user.id}", notice: "User updated successfully"
+      redirect_to "/users/#{@user.username}", notice: "User updated successfully"
     else
-      redirect_to "/users/#{@user.id}", alert: "User failed to update successfully"
+      redirect_to "/users", alert: "User failed to update successfully"
     end
   end
 
   def destroy
-    id = params[:path_id]
-    @user = User.where(id:).first
+    username = params[:path_id]
+    @user = User.where(username:).first
+
     @user.destroy
 
     redirect_to "/users", notice: "User deleted successfully"
