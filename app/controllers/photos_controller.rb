@@ -3,6 +3,7 @@ class PhotosController < ApplicationController
   end
 
   def index
+    @photos = Photo.all.order(created_at: :desc)
   end
 
   def create
