@@ -11,29 +11,29 @@
 #
 
 class FollowRequest < ApplicationRecord
-  validates(:sender, { :presence => true})
-  validates(:recipient, { :presence => true })
+  validates(:sender, { presence: true })
+  validates(:recipient, { presence: true })
   validates(:recipient_id, {
-    :uniqueness => { :scope => [:sender_id] }
+    uniqueness: { scope: [:sender_id] }
   })
 
   def sender
     my_sender_id = self.sender_id
 
-    matching_users = User.where({ :id => my_sender_id })
+    matching_users = User.where({ id: my_sender_id })
 
     the_user = matching_users.at(0)
 
-    return the_user
+    the_user
   end
 
   def recipient
     my_recipient_id = self.recipient_id
 
-    matching_users = User.where({ :id => my_recipient_id })
+    matching_users = User.where({ id: my_recipient_id })
 
     the_user = matching_users.at(0)
 
-    return the_user
+    the_user
   end
 end

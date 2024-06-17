@@ -13,46 +13,46 @@
 #
 
 class Photo < ApplicationRecord
-  validates(:poster, { :presence => true })
+  validates(:poster, { presence: true })
 
   def poster
     my_owner_id = self.owner_id
 
-    matching_users = User.where({ :id => my_owner_id })
+    matching_users = User.where({ id: my_owner_id })
 
     the_user = matching_users.at(0)
 
-    return the_user
+    the_user
   end
 
   def comments
-    my_id = self.id
+    self.id
 
-    matching_comments = Comment.where({ :photo_id => self.id })
+    matching_comments = Comment.where({ photo_id: self.id })
 
-    return matching_comments
+    matching_comments
   end
 
   def likes
-    my_id = self.id
+    self.id
 
-    matching_likes = Like.where({ :photo_id => self.id })
+    matching_likes = Like.where({ photo_id: self.id })
 
-    return matching_likes
+    matching_likes
   end
 
   def fans
     my_likes = self.likes
-    
+
     array_of_user_ids = Array.new
 
     my_likes.each do |a_like|
       array_of_user_ids.push(a_like.fan_id)
     end
 
-    matching_users = User.where({ :id => array_of_user_ids })
+    matching_users = User.where({ id: array_of_user_ids })
 
-    return matching_users
+    matching_users
   end
 
   def fan_list
@@ -66,6 +66,6 @@ class Photo < ApplicationRecord
 
     formatted_usernames = array_of_usernames.to_sentence
 
-    return formatted_usernames
+    formatted_usernames
   end
 end
