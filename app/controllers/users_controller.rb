@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    id = params[:path_id]
+    @user = User.where(id:).first
   end
 
   def index

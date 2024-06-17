@@ -1,2 +1,33 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%=@user.username%></h1>
+<dl>
+  <dt>ID</dt>
+  <dd><%=@user.id%></dd>
+  <dt>Edit user</dt>
+  <dd>
+    <form action="/users/update/<%=@user.id%>" method="post">
+      <label for="username_id">Username </label><input name="query_username" id="username_id" value="<%=@user.username%>" type="text">
+      <button>Update user</button>
+    </form>
+  </dd>
+</dl>
+<h2>Own photos (<%=@user.own_photos.count%>)</h2>
+<table>
+  <thead>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <%@user.own_photos.each do |photo|%>
+      <tr>
+        <td><img src="<%=photo.image%>"></td>
+        <td><%=@user.username%></td>
+        <td><%=photo.caption%></td>
+        <td><%=photo.created_at%></td>
+        <td><a href="/photos/<%=photo.id%>">Show details</a></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
