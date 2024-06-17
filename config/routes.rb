@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/users/:path_id", controller: "users", action: "show"
 
   get "/photos", controller: "photos", action: "index"
-  post "/photos_create", controller: "photos", action: "create"
+  get "/photos_create", controller: "photos", action: "create"
   post "/photos_update/:path_id", controller: "photos", action: "update"
   get "/photos_delete/:path_id", controller: "photos", action: "destroy"
   get "/photos/:path_id", controller: "photos", action: "show"
