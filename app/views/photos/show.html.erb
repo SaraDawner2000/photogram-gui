@@ -10,7 +10,7 @@
   <dd><%=@photo.created_at%></dd>
   <dt>Edit photo</dt>
   <dd>
-    <form action="/photos/update/<%=@photo.id%>" method = "post">
+    <form action="/photos_update/<%=@photo.id%>" method = "post">
       <label for="image_url_id">Image</label>
       <input id="image_url_id" name="query_image_url" value="<%=@photo.image%>" type="text">
       <label for="caption_id">Caption</label>
@@ -19,7 +19,7 @@
     </form>
   </dd>
   <dt>Delete photo</dt>
-  <dd><a href="/photos/delete/<%=@photo.id%>">Delete this photo</a></dd>
+  <dd><a href="/photos_delete/<%=@photo.id%>">Delete this photo</a></dd>
 </dl>
 <h2>Comments</h2>
 <table class="comment_table">
