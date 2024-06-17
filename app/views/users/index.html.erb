@@ -1,2 +1,23 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>List of users</h1>
+<form action="/users/create">
+  <label for="username_id">Username</label>
+  <input id="username_id" name="query_username" type="text" placeholder="Enter a username..." >
+  <button>Add user</button>
+</form>
+<hr>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Username</th>
+    <th></th>
+    <tbody>
+      <%@users.each do |user|%>
+        <tr>
+          <td><%=user.id%></td>
+          <td><%=user.username%></td>
+          <td><a href="users/<%=user.id%>">Show details</a></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </thead>
+</table>

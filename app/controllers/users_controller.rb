@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all.order(:username)
   end
 
   def create
